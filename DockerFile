@@ -1,0 +1,17 @@
+# Use an official Node.js runtime as the base image
+FROM node:14
+
+# Set the working directory
+WORKDIR /usr/src/app
+
+# Copy package.json and package-lock.json to the container
+COPY package*.json ./
+
+# Install Strapi and its dependencies
+RUN npm install -g strapi@latest
+
+# Expose the Strapi port (default is 1337)
+EXPOSE 1337
+
+# Start Strapi
+CMD ["strapi", "develop"]
